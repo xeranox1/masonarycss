@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
 body {
     margin: 0;
@@ -8,6 +17,10 @@ body {
 /* NAV */
 .main-nav {
     border-bottom: solid black 0.05em;
+    position: fixed;
+    background: #eee;
+    top: 0;
+    width: 100%;
 }
 .main-nav ul {
     list-style: none;
@@ -15,6 +28,21 @@ body {
     margin: 0;
     justify-content: center;
     font-size: 3em;
+}
+@media only screen and (max-width:700px) {
+    .main-nav ul {
+        font-size: 2em;
+        padding: 0;
+    }
+    
+}
+
+@media only screen and (max-width:448px) {
+    .main-nav ul {
+        font-size: 1em;
+        padding: 0;
+    }
+    
 }
 
 .main-nav ul li {
@@ -34,12 +62,28 @@ li a:hover {
 
 .cover {
     font-family: 'Raleway', sans-serif;
+    margin-top: 6.5em;
     display:flex;
-    font-size: 6em;
     justify-content: center;
     align-items: center;
     padding: 0.5em;
     height: 50vh;
+}
+
+.cover p {
+    font-size: 9rem;
+}
+
+@media only screen and (max-width: 767px) {
+    .cover p {
+        font-size: 5rem;
+    }
+}
+
+@media only screen and (max-width: 385px){
+    .cover p {
+        font-size: 3rem;
+    }
 }
 
 /* GRID */
@@ -47,13 +91,59 @@ li a:hover {
 .masonary {
     border-top: #808588 solid;
     column-count: 4;
-    column-gap: 1em;
-    padding: 0.2em;
+    padding: 0.1em;
+    margin: 1em auto;
+    column-gap: 0.5em;
 }
 
 .product {
     background-color: #eee;
     display: inline-block;
-    margin: 0 0 1em;
+    padding: 0.5em;
+    margin: 0 0 1.5em;
     width: 100%;
+}
+.product:hover {
+    animation: grew .25s;
+    transform: scale(1.2);
+}
+@keyframes grew {
+    from {
+        transform: scale(1);
+    } to {
+        transform: scale(1.2);
+    }
+}
+
+/* Masonry on large screens */
+@media only screen and (min-width: 1024px) {
+    .masonary {
+      column-count: 4;
+    }
+}
+  
+/* Masonry on medium-sized screens */
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+    .masonary {
+        column-count: 3;
+    }
+}
+  
+/* Masonry on small screens */
+@media only screen and (max-width: 767px) and (min-width: 540px) {
+    .masonary {
+        column-count: 2;
+    }
+}
+
+@media only screen and (max-width: 540px){
+    .masonary {
+        column-count: 1;
+    }
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
 }
